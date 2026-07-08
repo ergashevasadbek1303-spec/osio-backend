@@ -42,10 +42,17 @@ def _validate_image(file: UploadFile):
 
 async def upload_image(file: UploadFile, folder: str = "osio/menu") -> dict:
     """
-    Rasmni Cloudinary'ga yuklaydi.
+    Rasmni Cloudinary'ga yuklaydi. Agar Cloudinary sozlanmagan bo'lsa, dummy rasm qaytaradi.
     Returns: {"url": "...", "public_id": "..."}
     """
     _validate_image(file)
+
+    # Cloudinary sozlanmagan bo'lsa, dummy rasm qaytarish
+    if settings.CLOUDINARY_CLOUD_NAME == "disabled" or not settings.CLOUDINARY_CLOUD_NAME:
+        return {
+            "url": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=600&q=80",
+            "public_id": None,
+        }
 
     # Fayl hajmini tekshirish
     contents = await file.read()
