@@ -25,10 +25,10 @@ class Settings(BaseSettings):
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 30
     REFRESH_TOKEN_EXPIRE_DAYS: int = 7
 
-    # ---------- Cloudinary ----------
-    CLOUDINARY_CLOUD_NAME: str = ""
-    CLOUDINARY_API_KEY: str = ""
-    CLOUDINARY_API_SECRET: str = ""
+    # ---------- Cloudinary (ixtiyoriy) ----------
+    CLOUDINARY_CLOUD_NAME: str = "disabled"
+    CLOUDINARY_API_KEY: str = "disabled"
+    CLOUDINARY_API_SECRET: str = "disabled"
 
     # ---------- CORS ----------
     CORS_ORIGINS: str = "http://localhost:3000,http://localhost:8000"
